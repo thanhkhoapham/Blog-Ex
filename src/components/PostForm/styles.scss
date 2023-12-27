@@ -1,0 +1,15 @@
+.form-wrapper {
+    .button-group {
+        .button {
+            min-width: 100px;
+            margin-right: 15px;
+            max-width: fit-content;
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .save-button {
+        
+        }
+    }
+}
