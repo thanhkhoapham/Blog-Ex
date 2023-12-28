@@ -6,6 +6,7 @@ import { RootState } from "store"
 import { Button, Checkbox, Form, Input } from "antd"
 import TextArea from "antd/es/input/TextArea"
 import "./styles.scss";
+import { useCreateNewPostMutation, useUpdatePostByIdMutation } from "services/posts"
 
 interface CreatePostProps {
   data: Post
@@ -18,6 +19,10 @@ const PostForm = ({ data, className, onClose }: CreatePostProps): React.ReactEle
   const editingPost = useSelector((state: RootState) => state.blog.editingPost);
   const dispatch = useDispatch();
 
+  // use create a new post from RTK Query
+  const [createPost, { isLoading }] = useCreateNewPostMutation();
+  const [updatePost] = useUpdatePostByIdMutation();
+
   useEffect(() => {
     setFormData(editingPost || data)
   }, [editingPost])
@@ -25,9 +30,17 @@ const PostForm = ({ data, className, onClose }: CreatePostProps): React.ReactEle
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    if (editingPost) { dispatch(finishEditingPost(formData))} else {
+    if (editingPost) { 
+      dispatch(finishEditingPost(formData))
+      
+      // call the mutation in component
+      updatePost(formData);
+    } else {
       const formDataWithId = { ...formData }
       dispatch(addPost(formDataWithId));
+
+      // call the mutation in the component
+      createPost(formDataWithId);
     }
 
     setFormData(data);
@@ -79,8 +92,9 @@ const PostForm = ({ data, className, onClose }: CreatePostProps): React.ReactEle
           </Fragment>
         )}
         {!editingPost && <Fragment>
-          <Button className="button save-button" htmlType="submit">Save</Button>
+          <Button className="button save-button" htmlType="submit" disabled={isLoading}>Save</Button>
           <Button className="button cancel-button" onClick={onClose}>Cancel</Button>
+          { isLoading && 'Saving....'}
         </Fragment>}
       </div>
     </Form>;

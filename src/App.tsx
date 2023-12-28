@@ -1,5 +1,6 @@
 import Blog from "pages/Blog"
-import "./styles.scss"
+import "./styles.scss";
+
 
 function App() {
   return <div className="root">

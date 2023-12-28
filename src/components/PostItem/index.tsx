@@ -10,7 +10,7 @@ interface PostItemType {
 }
 
 const PostItem = ({ post, handleDelete, handleStartEditing }: PostItemType): React.ReactElement => {
-  const date = convertDateTime(post.publishDate)
+  const date = convertDateTime(post.publishDate);
 
   return <div className='blog-item-wrapper'>
       <div className='image'>

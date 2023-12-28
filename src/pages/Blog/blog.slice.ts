@@ -8,7 +8,7 @@ interface BlogState {
 }
 
 const initialState: BlogState = {
-  postList: initalPostList,
+  postList: [],
   editingPost: null
 }
 
