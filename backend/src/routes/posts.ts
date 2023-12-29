@@ -8,6 +8,15 @@ postRoutes.get("/", (req: Request, res: Response) => {
     res.send(mockData.getPostData());
 });
 
+// api/posts/{id} - Get all posts
+postRoutes.get("/:id", (req: Request, res: Response) => {
+    const { id } = req.params;
+    console.log(`Get a post has id ${id}`)
+
+    res.send(mockData.getPostById(id));
+});
+
+
 // api/posts - Add new post
 postRoutes.post("/", (req: Request, res: Response) => {
     const body = {
@@ -25,7 +34,7 @@ postRoutes.put("/:id", (req: Request, res: Response) => {
     console.log("Update post has id: ", id);
 
     const postUpdate = req.body;
-    console.log(`New information of post: ${postUpdate}`);
+    console.log(`New information of post: ${postUpdate.toString()}`);
 
     res.send(mockData.updatePostById(id, postUpdate));
 });
