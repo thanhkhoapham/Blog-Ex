@@ -2,6 +2,52 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Ứng Dụng Demo CRUD
+
+Đây là một ứng dụng demo với khả năng thực hiện các thao tác CRUD (Create, Read, Update, Delete). Ứng dụng được xây dựng với các công nghệ sau:
+
+### Front-end
+- **React JS**
+- **Redux Toolkit**
+- **TypeScript**
+- **Ant Design Framework**
+- **SCSS và Tailwind CSS**
+
+### Back-end
+- **Node.js và Express**
+- **MS SQL**
+- **DockerFile**
+
+## Hướng Dẫn Cài Đặt
+
+1. **Front-end**
+   - Di chuyển vào thư mục `frontend` và chạy `npm install`.
+   - Sử dụng `npm start` để khởi động máy chủ phía client.
+
+2. **Back-end**
+   - Di chuyển vào thư mục `backend` và chạy `npm install`.
+   - Cấu hình kết nối cơ sở dữ liệu MS SQL Server trong tệp cấu hình.
+
+3. **Docker**
+   - Sử dụng Dockerfile để tạo container cho cả front-end và back-end nếu cần.
+
+## Cách Sử Dụng
+
+- Đăng nhập vào ứng dụng để trải nghiệm các chức năng CRUD.
+
+## Tài Nguyên Tham Khảo
+
+- [React Documentation](https://reactjs.org/docs/getting-started.html)
+- [Redux Toolkit Documentation](https://redux-toolkit.js.org/)
+- [Ant Design Documentation](https://ant.design/docs/react/introduce)
+- [Node.js Documentation](https://nodejs.org/en/docs/)
+- [Express Documentation](https://expressjs.com/)
+- [Microsoft SQL Server Documentation](https://docs.microsoft.com/en-us/sql/sql-server/?view=sql-server-ver15)
+
+## Mở Đóng Góp
+
+Nếu bạn muốn đóng góp vào ứng dụng, hãy mở một issue hoặc tạo pull request. Chúng ta rất hoan nghênh mọi đóng góp từ cộng đồng.
+
 ## Available Scripts
 
 In the project directory, you can run:
