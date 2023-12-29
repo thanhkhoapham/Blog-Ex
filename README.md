@@ -7,16 +7,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Đây là một ứng dụng demo với khả năng thực hiện các thao tác CRUD (Create, Read, Update, Delete). Ứng dụng được xây dựng với các công nghệ sau:
 
 ### Front-end
-- **React JS**
-- **Redux Toolkit**
-- **TypeScript**
-- **Ant Design Framework**
-- **SCSS và Tailwind CSS**
+- <i class="fab fa-react"></i> **React JS**
+- <i class="fab fa-redux"></i> **Redux Toolkit**
+- <i class="fab fa-js-square"></i> **TypeScript**
+- <i class="fas fa-paint-brush"></i> **Ant Design Framework**
+- <i class="fab fa-sass"></i> **SCSS và Tailwind CSS**
 
 ### Back-end
-- **Node.js và Express**
-- **MS SQL**
-- **DockerFile**
+- <i class="fab fa-node"></i> **Node.js và Express**
+- <i class="fas fa-database"></i> **MS SQL**
+- **DockerFile** <i class="fab fa-docker"></i>
 
 ## Hướng Dẫn Cài Đặt
 
