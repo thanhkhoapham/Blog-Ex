@@ -54,6 +54,10 @@ class MockData {
     return MockData.postData;
   }
 
+  getPostById(id: string) {
+    return MockData.postData.find(post => post.id === id);
+  }
+
   addNewPostData(post: Post): Post[] {
     MockData.postData = [
       ...MockData.postData,
@@ -64,7 +68,7 @@ class MockData {
   }
 
   updatePostById(id: string, postUpdate: Post): Post[] {
-    MockData.postData.map(post => {
+    MockData.postData = MockData.postData.map(post => {
       if (post.id === id) {
         post = {
           ...post,
@@ -72,9 +76,10 @@ class MockData {
         }
       }
       return post;
-    })
+    });
 
-    return this.getPostData();
+    console.log(MockData.postData);
+    return MockData.postData
   }
   
   deletePostById(id: string): Post[] {

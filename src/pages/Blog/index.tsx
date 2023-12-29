@@ -5,6 +5,8 @@ import "./styles.scss"
 import { Post } from "types/blog.type"
 import PostForm from "components/PostForm"
 import TypingAnimation from "components/TypingAnimation"
+import { useAppDispatch, useAppSelector } from "hooks/customHook"
+import { openForm, isOpenFormSelector } from "./postForm.slice"
 
 const initialState: Post = {
   description: "",
@@ -20,10 +22,11 @@ const buttonStyles: React.CSSProperties = {
 }
 
 const Blog = (): React.ReactElement => {
-  const [open, setOpen] = useState(false)
+  const dispatch = useAppDispatch()
 
-  const showModal = () => setOpen(true)
-  const handleCancel = () => setOpen(false)
+  const open = useAppSelector(isOpenFormSelector);
+
+  const handleShowModal = () => dispatch(openForm(null));
 
   return <div className='blog-wrapper'>
       <div className="content">
@@ -33,14 +36,14 @@ const Blog = (): React.ReactElement => {
         <TypingAnimation />
       </div>
 
-      <Button className='button-wrapper' style={buttonStyles} onClick={showModal}>
+      <Button className='button-wrapper' style={buttonStyles} onClick={handleShowModal}>
         <span className="text">New Blog</span>
       </Button>
       <PostList />
 
-      <Modal title='Add new Blog' open={open} onCancel={handleCancel} footer={false}>
-        <PostForm data={initialState} onClose={handleCancel} />
-      </Modal>
+     {<Modal destroyOnClose title='Add new Blog' open={open} onCancel={handleShowModal} footer={false}>
+        <PostForm data={initialState} />
+      </Modal>}
     </div>;
 }
 

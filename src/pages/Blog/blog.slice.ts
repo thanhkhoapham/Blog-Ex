@@ -1,15 +1,16 @@
 import { current, PayloadAction, nanoid, createSlice } from "@reduxjs/toolkit"
-import { initalPostList } from "dummyData/blog"
 import { Post } from "types/blog.type"
 
 interface BlogState {
   postList: Post[]
   editingPost: Post | null
+  idPostEdited: string | null
 }
 
 const initialState: BlogState = {
   postList: [],
-  editingPost: null
+  editingPost: null,
+  idPostEdited: null
 }
 
 const blogSlice = createSlice({
@@ -27,6 +28,9 @@ const blogSlice = createSlice({
       const postId = action.payload
       const foundPost = state.postList.find((post) => post.id === postId) || null
       state.editingPost = foundPost
+    },
+    editPostById: (state, action: PayloadAction<string>) => {
+      state.idPostEdited = action.payload
     },
     cancelEditingPost: (state) => {
       state.editingPost = null
@@ -60,7 +64,7 @@ const blogSlice = createSlice({
       .addMatcher(
         (action) => action.type.includes("cancel"),
         (state, action) => {
-          console.log(current(state))
+          console.log("rejected the action: ", current(state))
         }
       )
       .addDefaultCase((state, action) => {
@@ -69,7 +73,7 @@ const blogSlice = createSlice({
   }
 })
 
-export const { addPost, cancelEditingPost, deletePost, finishEditingPost, startEditingPost } = blogSlice.actions
-const blogReducer = blogSlice.reducer
+export const { addPost, cancelEditingPost, deletePost, finishEditingPost, startEditingPost, editPostById } = blogSlice.actions
 
+const blogReducer = blogSlice.reducer
 export default blogReducer

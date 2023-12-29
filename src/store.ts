@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"
 import blogReducer from "pages/Blog/blog.slice"
+import formReducer from "pages/Blog/postForm.slice"
 import { appApi } from "services/posts"
 
 export const store = configureStore({
-  reducer: { 
-    blog: blogReducer,
+  reducer: {
+    form: formReducer,
+    // blog: blogReducer,
     // Add the generated reducer as a specific top-level slice
     [appApi.reducerPath]: appApi.reducer,
   },

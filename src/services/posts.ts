@@ -19,6 +19,9 @@ export const appApi = createApi({
             query: () => "/posts",
             providesTags: ["postsApi"],
         }),
+        getPostById: builder.query<Post, string>({
+            query: (id: string) => `/posts/${id}`
+        }),
 
         // mutation which send an update to the server
         createNewPost: builder.mutation<Post[], Post>({
@@ -41,10 +44,11 @@ export const appApi = createApi({
             query: (id: string) => ({
                 url: `/posts/${id}`,
                 method: "DELETE"
-            })
+            }),
+            invalidatesTags: ["postsApi"],
         })
     })
 });
 
 // Export the auto-generated hook for the `getPosts` query endpoint
-export const { useGetPostsQuery, useCreateNewPostMutation, useUpdatePostByIdMutation, useDeletePostByIdMutation } = appApi;
+export const { useGetPostsQuery, useCreateNewPostMutation, useUpdatePostByIdMutation, useDeletePostByIdMutation, useGetPostByIdQuery } = appApi;
